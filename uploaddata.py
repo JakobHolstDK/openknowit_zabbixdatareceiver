@@ -85,9 +85,10 @@ def insert_data(cursor, data, connection):
             value = data['value']
             json_data = json.loads(value)
             pprint.pprint(json_data)
-            statement = "INSERT INTO zabbix_data_type_4 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
+            statement = "INSERT INTO zabbix_data_type_4 (host_name, item_id, item_name, clock, ns, fsname, options, bytes_used, bytes_free, bytes_total, bytes_pused, bytes_pfred, fstype, inodes_used, inodes_free, inodes_total, inodes_pused, inodes_pfree) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, json_data['fsname'], json_data['options'], json_data['bytes']['used'], json_data['bytes']['free'], json_data['bytes']['total'], json_data['bytes']['pused'], json_data['bytes']['pfred'], json_data['fstype'], json_data['inodes_used'], json_data['inodes_free'], json_data['inodes_total'], json_data['inodes_pused'], json_data['inodes_pfree'] ))
             connection.commit()
+
 
     except psycopg2.Error as e:
         #print(f"Error inserting data: {e}")

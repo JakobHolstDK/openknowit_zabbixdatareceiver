@@ -1,0 +1,2 @@
+{"fsname":"/boot","options":"rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota","bytes":{"used":249491456,"free":813764608,"total":1063256064,"pused":23.464851454635109,"pfree":76.535148545364891},"fstype":"xfs","inodes":{"used":364,"free":523924,"total":524288,"pused":0.069427490234375,"pfree":99.930572509765625}}
+

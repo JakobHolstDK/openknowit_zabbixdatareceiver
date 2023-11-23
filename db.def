@@ -1,0 +1,12 @@
+CREATE TABLE zabbix_data (
+    id SERIAL,
+    host_name VARCHAR(255),
+    item_id INTEGER,
+    item_name VARCHAR(255),
+    clock TIMESTAMP,
+    ns BIGINT,
+    value BIGINT,
+    data_type INTEGER,
+    PRIMARY KEY (id, clock)
+);
+

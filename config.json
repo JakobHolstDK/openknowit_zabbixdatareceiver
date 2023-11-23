@@ -1,0 +1,8 @@
+{
+    "port": "8080",
+    "data_path": "/var/lib/dash",
+    "log_path": "/var/log/dash",
+    "enable_tls": false,
+    "cert_file": "",
+    "key_file": ""
+}

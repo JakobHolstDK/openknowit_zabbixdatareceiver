@@ -23,7 +23,7 @@ def parse_json_line(line):
         data = json.loads(line)
         return data
     except json.JSONDecodeError as e:
-        print(f"Error parsing JSON: {e}")
+#        print(f"Error parsing JSON: {e}")
 
         return None
 
@@ -90,7 +90,7 @@ def insert_data(cursor, data, connection):
             connection.commit()
 
     except psycopg2.Error as e:
-        print(f"Error inserting data: {e}")
+        #print(f"Error inserting data: {e}")
         connection.rollback()
         
     

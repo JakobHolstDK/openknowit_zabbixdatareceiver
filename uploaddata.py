@@ -83,7 +83,8 @@ def insert_data(cursor, data, connection):
             itemname = data['name']
             ns = data['ns']
             value = data['value']
-            pprint.pprint(data['value']['fsname'])
+            json_data = json.loads(value)
+            pprint.pprint(json_data)
             statement = "INSERT INTO zabbix_data_type_4 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
             connection.commit()

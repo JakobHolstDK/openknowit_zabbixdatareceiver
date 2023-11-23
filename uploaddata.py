@@ -2,6 +2,8 @@
 
 import json
 import psycopg2
+import pprint
+
 from datetime import datetime
 
 # Database connection parameters
@@ -41,9 +43,62 @@ def insert_data(cursor, data, connection):
           print(statement)
           cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
           connection.commit()
+
+        if ( data['type'] == 1 ):
+          datatype = 1
+          host_name = data['host']['name']
+          itemid = data['itemid']
+          itemname = data['name']
+          ns = data['ns']
+          value = data['value']
+          statement = "INSERT INTO zabbix_data_type_1 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+          print(statement)
+          cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
+          connection.commit()
+
+        if ( data['type'] == 2 ):
+            datatype = 2
+            host_name = data['host']['name']
+            itemid = data['itemid']
+            itemname = data['name']
+            ns = data['ns']
+            value = data['value']
+            statement = "INSERT INTO zabbix_data_type_2 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            print(statement)
+            cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
+            connection.commit()
+
+        if ( data['type'] == 3 ):
+            datatype = 3
+            host_name = data['host']['name']
+            itemid = data['itemid']
+            itemname = data['name']
+            ns = data['ns']
+            value = data['value']
+            statement = "INSERT INTO zabbix_data_type_3 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            print(statement)
+            cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
+            connection.commit()
+        
+        if ( data['type'] == 4 ):
+            datatype = 4
+            host_name = data['host']['name']
+            itemid = data['itemid']
+            itemname = data['name']
+            ns = data['ns']
+            value = data['value']
+            pprint.pprint(data['value'])
+
+            statement = "INSERT INTO zabbix_data_type_4 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            print(statement)
+            cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
+            connection.commit()
+
     except psycopg2.Error as e:
-        connection.rollback()  # Rollback the transaction in case of an error
         print(f"Error inserting data: {e}")
+        connection.rollback()
+        
+    
 
 
 def main():

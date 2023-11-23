@@ -40,7 +40,6 @@ def insert_data(cursor, data, connection):
           ns = data['ns']
           value = data['value']
           statement = "INSERT INTO zabbix_data_type_0 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-          print(statement)
           cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
           connection.commit()
 
@@ -52,7 +51,6 @@ def insert_data(cursor, data, connection):
           ns = data['ns']
           value = data['value']
           statement = "INSERT INTO zabbix_data_type_1 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-          print(statement)
           cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
           connection.commit()
 
@@ -64,7 +62,6 @@ def insert_data(cursor, data, connection):
             ns = data['ns']
             value = data['value']
             statement = "INSERT INTO zabbix_data_type_2 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            print(statement)
             cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
             connection.commit()
 
@@ -76,7 +73,6 @@ def insert_data(cursor, data, connection):
             ns = data['ns']
             value = data['value']
             statement = "INSERT INTO zabbix_data_type_3 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            print(statement)
             cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
             connection.commit()
         
@@ -88,9 +84,7 @@ def insert_data(cursor, data, connection):
             ns = data['ns']
             value = data['value']
             pprint.pprint(data['value'])
-
             statement = "INSERT INTO zabbix_data_type_4 (host_name, item_id, item_name, clock, ns, value, data_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            print(statement)
             cursor.execute(statement, ( host_name, itemid, itemname, formatted_datetime, ns, value, datatype  ))
             connection.commit()
 

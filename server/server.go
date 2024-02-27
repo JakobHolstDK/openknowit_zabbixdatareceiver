@@ -137,18 +137,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, h payloadHandler) {
 func saveData(filename string, body []byte) error {
 	fileMux.Lock()
 	defer fileMux.Unlock()
-	file, err := os.OpenFile(filepath.Join(savePath, filename), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return fmt.Errorf("failed to open save file %s", err.Error())
-	}
-
-	defer file.Close()
-
-	_, err = file.WriteString(string(body))
-	if err != nil {
-		return fmt.Errorf("failed to write to save file %s", err.Error())
-	}
-
+	fmt.Println(string(body))
 	return nil
 }
 

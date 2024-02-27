@@ -176,7 +176,6 @@ func jsonResponse(w http.ResponseWriter, body []byte, msg string, code int) {
 	w.WriteHeader(code)
 
 	if code == http.StatusOK {
-		log.Printf("request successful with data: %s", body)
 		j, _ := json.Marshal(map[string]string{"response": "success"})
 		fmt.Fprintln(w, string(j))
 		return
